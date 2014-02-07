@@ -1,12 +1,33 @@
 h1 {
 	font-size: 30px;
-	text-align: center;
 }
 
 p {
 	text-align: center;
 }
 
-#title_section {
-	font-size: 80px;
+h2 {
+	text-align: left;
+	font-size: 18;
 }
+
+
+h1.section {
+	font-size: 20px;
+}
+
+div.links {
+	font-family: Consolas;
+	font-size: 18px;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+div.title_section {
+	text-align: center;
+}
+
+

@@ -1,0 +1,20 @@
+h1 {
+}
+
+h1.schoolid {
+	color: black;
+	font-size: 20px;
+}
+
+p {
+	text-align: left;
+}
+
+span.asifidontblazeit {
+	color: black;
+	font-size: 25px;
+}
+
+div.title_section {
+	text-align: center;
+}

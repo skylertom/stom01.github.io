@@ -1,33 +1,29 @@
-h1 {
-	font-size: 30px;
+body {
+	background-color: #E9ECF0;
+	margin: 30px;
 }
 
-p {
+h1 {
+	font-size: 35px;
+	font-family: 'Raleway Light';
+}
+
+#name {
 	text-align: center;
 }
 
-h2 {
-	text-align: left;
-	font-size: 18;
-}
-
-
-h1.section {
-	font-size: 20px;
+#photo {
+	float: right;
+	padding-right: 50px;
 }
 
 div.links {
-	font-family: Consolas;
-	font-size: 18px;
+	padding-top: 20px;
+	text-align: center;
+	font-family: Arvo;
+	font-size: 25px;
 }
 
 a {
 	text-decoration: none;
 }
-
-
-div.title_section {
-	text-align: center;
-}
-
-

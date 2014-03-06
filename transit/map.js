@@ -60,6 +60,15 @@ function dataReady() {
 	}
 }
 function getLine(line) {
+	var data;
+	var i = 0;
+	var trainsFile = new ActiveXObject('Scripting.FileSystemObject'),
+	iStream=trainsFile.OpenTextFile(stations.txt, 1, false);
+	while (!iStream.AtEndOfStream) {
+		data[i++] = iStream.ReadLine();
+	}
+	console.log(data[0]);
+	/*
 	trainsFile = new XMLHttpRequest();
 	trainsFile.open('get', 'stations.txt');
 	trainsFile.onreadystatechange = function() {
@@ -78,4 +87,5 @@ function getLine(line) {
 			console.log(data[0][1]);
 		}
 	}
+	*/
 }

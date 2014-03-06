@@ -1,4 +1,3 @@
-import System.IO;
 var xhr;
 var initialLocation;
 var initialMarker;

@@ -1,3 +1,4 @@
+import System.IO;
 var xhr;
 var initialLocation;
 var initialMarker;
@@ -70,9 +71,10 @@ function getLine(line) {
 			break;
 		}
 		inputArray = input.split(',');
-		if (inputArray[1] == line) {
+		if (inputArray[0] == line) {
 			data[i++] = inputArray;
 		}
 	}
 	file.close();
+	console.log(data[0][1]);
 }

@@ -17,14 +17,14 @@ function init() {
 		navigator.geolocation.getCurrentPosition(function(position) {
 			initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 			map.setCenter(initialLocation);
+			initialMarker = new google.maps.Marker({
+				position: initialLocation,
+				map: map,
+				title: 'You are here'
+			});
 
 		}, function() {
 			handleNoGeolocation(browserSupportFlag);
-		});
-		initialMarker = new google.maps.Marker({
-			position: initialLocation,
-			map: map,
-			title: 'You are here'
 		});
 	}
 	else { //browser doesn't support Geolocation

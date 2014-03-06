@@ -1,18 +1,45 @@
 var xhr;
+var initialLocation;
+var downtown = new google.maps.LatLng(-34.397, 150.644); 
+//still need to change downtown to actual downtown lat/lng
 function init() {
 	xhr = new XMLHttpRequest();
 	xhr.open("get", "http://mbtamap.herokuapp.com/mapper/rodeo.json", true);
 	xhr.onreadystatechange = dataReady;
 	xhr.send(null);
 	var mapOptions = {
-		center: new google.maps.LatLng(-34.397, 150.644), 
 		zoom: 12
 	};
 	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	if (navigator.geolocation) {
+		browserSupportFlag = true;
+		navigator.geolocation.getCurrentPosition(function(position) {
+			initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			map.setCenter(initialLocation);
+
+		}, function() {
+			handleNoGeolocation(browserSupportFlag);
+		});
+	}
+	else { //browser doesn't support Geolocation
+		browserSupportFlag = false;
+		handleNoGeolocation(browserSupportFlag);
+	}
 }
 
 google.maps.event.addDomListener(window, 'load', init);
 
+function handleNoGeolocation(errorFlag) {
+	if (errorFlag == true) {
+		alert("Geolocation service failed.");
+		initialLocation = downtown;
+	}
+	else {
+		alert("Your browser doesn't support geolocation");
+		initialLocation = downtown;
+	}
+	map.setCenter(initialLocation);
+}
 function dataReady() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		scheduleData = JSON.parse(xhr.responseText);

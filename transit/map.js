@@ -1,5 +1,6 @@
 var xhr;
 var initialLocation;
+var initialMarker;
 var downtown = new google.maps.LatLng(-34.397, 150.644); 
 //still need to change downtown to actual downtown lat/lng
 function init() {
@@ -8,7 +9,7 @@ function init() {
 	xhr.onreadystatechange = dataReady;
 	xhr.send(null);
 	var mapOptions = {
-		zoom: 12
+		zoom: 21
 	};
 	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 	if (navigator.geolocation) {
@@ -19,6 +20,11 @@ function init() {
 
 		}, function() {
 			handleNoGeolocation(browserSupportFlag);
+		});
+		initialMarker = new google.maps.Marker({
+			position: initialLocation,
+			map: map,
+			title: 'You are here'
 		});
 	}
 	else { //browser doesn't support Geolocation

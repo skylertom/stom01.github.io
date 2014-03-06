@@ -9,7 +9,7 @@ function init() {
 	xhr.onreadystatechange = dataReady;
 	xhr.send(null);
 	var mapOptions = {
-		zoom: 21
+		zoom: 16
 	};
 	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 	if (navigator.geolocation) {

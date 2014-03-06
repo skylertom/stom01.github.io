@@ -68,13 +68,11 @@ function getLine(line) {
 	var inputArray;
 	var i = 0;
 	trainsParsed.map(function(item) {
-		console.log(item);
-		/*
 		inputArray = item.split(',');
 		if (inputArray[0] == line) {
-			data[i++] = inputArray;
+			console.log(item);
+			//data[i++] = inputArray;
 		}
-		*/
 	});
-	console.log(data[0][1]);
+	//console.log(data[0][1]);
 }

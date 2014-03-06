@@ -68,7 +68,7 @@ function getLine(line) {
 	var i = 0;
 	inputArray = trainsParsed[0].split(',');
 	inputArray.map(function(item) {
-		consol.log(item);
+		console.log(item);
 	});
 	/*
 	trainsParsed.map(function(item) {

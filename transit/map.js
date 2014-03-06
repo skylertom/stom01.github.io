@@ -2,6 +2,7 @@ var xhr;
 var initialLocation;
 var initialMarker;
 var downtown = new google.maps.LatLng(-34.397, 150.644); 
+var stops;
 //still need to change downtown to actual downtown lat/lng
 function init() {
 	xhr = new XMLHttpRequest();
@@ -9,7 +10,7 @@ function init() {
 	xhr.onreadystatechange = dataReady;
 	xhr.send(null);
 	var mapOptions = {
-		zoom: 16
+		zoom: 14
 	};
 	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 	if (navigator.geolocation) {
@@ -51,9 +52,27 @@ function dataReady() {
 		scheduleData = JSON.parse(xhr.responseText);
 		scheduleDom = document.getElementById("schedule");
 		scheduleDom.innerHTML = scheduleData["line"];
+		getLine(scheduleData["line"]);
 	}
 	else if (xhr.readyState == 4 && xhr.status == 500) {
 		scheduleDom = document.getElementById("schedule");
 		scheduleDom.innerHTML = '<p>Could not access MBTA schedule</p>';
 	}
+}
+function getLine(line) {
+	var  file = new File.OpenText("stations.txt");
+	var data;
+	var input = "";
+	var inputArray;
+	while (true) {
+		input = file.ReadLine();
+		if (input == null) {
+			break;
+		}
+		inputArray = input.split(',');
+		if (inputArray[1] == line) {
+			data[i++] = inputArray;
+		}
+	}
+	file.close();
 }

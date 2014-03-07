@@ -3,6 +3,7 @@ var initialLocation;
 var initialMarker;
 var downtown = new google.maps.LatLng(-34.397, 150.644); 
 var lineData;
+var map;
 //still need to change downtown to actual downtown lat/lng
 function init() {
 	xhr = new XMLHttpRequest();
@@ -12,7 +13,7 @@ function init() {
 	var mapOptions = {
 		zoom: 14
 	};
-	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 	if (navigator.geolocation) {
 		browserSupportFlag = true;
 		navigator.geolocation.getCurrentPosition(function(position) {
@@ -67,7 +68,7 @@ function MakeLineMarkers() {
 		var marker = new google.maps.Marker ({
 			position: new google.maps.LatLng(item["lat"], item["lng"]),
 			map: map,
-			icon: iconBase + 'rail.png';
+			icon: iconBase + 'rail.png'
 		});
 	});
 }

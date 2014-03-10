@@ -205,9 +205,10 @@ function findStation(callback) {
 }
 
 function findIndexOfMin(array) {
-	var minIndex;
-	var currentMin;
-	console.log("Elements = " + array.length)
+	var minIndex = 0;
+	var currentMin = array[0];
+	console.log("Elements = " + array.length);
+	console.log("starts at  " + array[i]);
 	for (var i in array) {
 		if (array[i] < currentMin) {
 			console.log("Chnging min: from " + currentMin + " to " + array[i]);

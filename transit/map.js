@@ -21,11 +21,10 @@ function dataReady() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		scheduleData = JSON.parse(xhr.responseText);
 		console.log(scheduleData["line"]);
-		findGeoLocation();
 		getLine(scheduleData["line"]);
 		MakeLineMarkers();
 		drawLine(scheduleData["line"]);
-		findStation();
+		findGeoLocation(findStation);
 	}
 	else if (xhr.readyState == 4 && xhr.status == 500) {
 		scheduleDom = document.getElementById("map_canvas");
@@ -49,6 +48,9 @@ function findGeoLocation(callback) {
 				title: 'You are here'
 			});
 			findStation();
+			if (callback) {
+				callback();
+			}
 		}, function() {
 			handleNoGeolocation(browserSupportFlag);
 		});
@@ -56,9 +58,6 @@ function findGeoLocation(callback) {
 	else { //browser doesn't support Geolocation
 		browserSupportFlag = false;
 		handleNoGeolocation(browserSupportFlag);
-	}
-	if (callback) {
-		callback();
 	}
 }
 

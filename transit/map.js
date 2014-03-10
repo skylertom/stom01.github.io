@@ -152,13 +152,13 @@ function drawLine(line) {
 	});
 	linePath.setMap(map);
 }
+	var distances = [];
 function findStation() {
 	Number.prototype.toRad = function() {
 		return this * Math.PI / 180;
 	}
 
 	var i = 0;
-	var distances = [];
 	var lat2 = initialLocation.lat(); 
 	var lon2 = initialLocation.lng(); 
 	var R = 6371; // km 

@@ -23,9 +23,11 @@ function dataReady() {
 		scheduleData = JSON.parse(xhr.responseText);
 		console.log(scheduleData["line"]);
 		getLine(scheduleData["line"], function () {
-			MakeLineMarkers(function () {
-				drawLine(scheduleData["line"], function () {
-					findGeoLocation(function() {findStation()});
+			findGeoLocation(function() {
+				MakeLineMarkers(function () {
+					drawLine(scheduleData["line"], function () {
+						findStation()
+					});
 				});
 			});
 		});

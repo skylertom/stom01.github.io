@@ -214,5 +214,6 @@ function findIndexOfMin(array) {
 			minIndex = i;
 		}
 	}
+	console.log("From find function, min is: " + minIndex);
 	return minIndex;
 }

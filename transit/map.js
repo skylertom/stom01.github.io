@@ -188,5 +188,6 @@ function findIndexOfMin(array) {
 			minIndex = i;
 		}
 	}
+	console.log("the min is at i: " + i);
 	return i;
 }

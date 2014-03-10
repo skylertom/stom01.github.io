@@ -177,7 +177,8 @@ function findStation() {
 		console.log("distance at i: " + i + " the distance is: " + distances[i]);
 		i++;
 	});
-	//var index = findIndexOfMin(distances);
+	var index = findIndexOfMin(distances);
+	console.log("Min is " + index);
 	//console.log(markers[index].getTitle());
 }
 

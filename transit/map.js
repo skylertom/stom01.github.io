@@ -22,8 +22,8 @@ function dataReady() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		scheduleData = JSON.parse(xhr.responseText);
 		console.log(scheduleData["line"]);
-		getLine(scheduleData["line"], function () {
-			findGeoLocation(function() {
+		findGeoLocation(function() {
+			getLine(scheduleData["line"], function () {
 				MakeLineMarkers(function () {
 					drawLine(scheduleData["line"], function () {
 						findStation()

@@ -111,9 +111,10 @@ function MakeLineMarkers(callback) {
 			title:  item["place"],
 		});
 		markers[i++] = lineMarkers;
-		function () {
+		var foo = function () {
 			displayInfo(lineMarkers);
 		}
+		foo();
 	});
 	if (callback) {
 		callback();

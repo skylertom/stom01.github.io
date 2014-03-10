@@ -23,10 +23,11 @@ function dataReady() {
 		console.log(scheduleData["line"]);
 		getLine(scheduleData["line"], function () {
 			MakeLineMarkers(function () {
-				drawLine(scheduleData["line"]);
+				drawLine(scheduleData["line"], function () {
+					findGeoLocation(function() {findStation()});
+				});
 			});
 		});
-		findGeoLocation(function() {findStation()});
 	}
 	else if (xhr.readyState == 4 && xhr.status == 500) {
 		scheduleDom = document.getElementById("map_canvas");
@@ -108,10 +109,11 @@ function MakeLineMarkers(callback) {
 			map: map,
 			icon: iconBase + 'rail.png',
 			title:  item["place"],
-			animation: google.maps.Animation.DROP
 		});
 		markers[i++] = lineMarkers;
-		displayInfo(lineMarkers);
+		function () {
+			displayInfo(lineMarkers);
+		}
 	});
 	if (callback) {
 		callback();

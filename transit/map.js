@@ -164,7 +164,7 @@ function findStation() {
 	var R = 6371; // km 
 	markers.map(function (item) {
 		var lat1 = item.getPosition().lat();
-		var long1 = item.getPosition().lng();
+		var lon1 = item.getPosition().lng();
 		var x1 = lat2-lat1;
 		var dLat = x1.toRad();  
 		var x2 = lon2-lon1;

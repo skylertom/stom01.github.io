@@ -24,7 +24,7 @@ function dataReady() {
 		getLine(scheduleData["line"]);
 		MakeLineMarkers();
 		drawLine(scheduleData["line"]);
-		findGeoLocation(findStation());
+		findGeoLocation(function() {findStation()});
 	}
 	else if (xhr.readyState == 4 && xhr.status == 500) {
 		scheduleDom = document.getElementById("map_canvas");

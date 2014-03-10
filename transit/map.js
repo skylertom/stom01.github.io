@@ -165,18 +165,19 @@ function findStation() {
 	markers.map(function (item) {
 		var lat1 = item.getPosition().lat();
 		var lon1 = item.getPosition().lng();
-		var x1 = lat2-lat1;
+		var x1 = Math.abs(lat2-lat1);
 		var dLat = x1.toRad();  
-		var x2 = lon2-lon1;
+		var x2 = Math.abs(lon2-lon1);
 		var dLon = x2.toRad();  
 		var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
 		                Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
 		                Math.sin(dLon/2) * Math.sin(dLon/2);  
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 		distances[i++] = R * c; 
+		console.log("distance at i: " + i + " the distance is: " + distances[i - 1]);
 	});
-	var index = findIndexOfMin(distances);
-	console.log(markers[index].getTitle());
+	//var index = findIndexOfMin(distances);
+	//console.log(markers[index].getTitle());
 }
 
 function findIndexOfMin(array) {

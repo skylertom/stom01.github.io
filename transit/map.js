@@ -152,6 +152,7 @@ function displayInfo(myMarker) {
 	});
 }
 
+/*
 function drawLine(line, callback) {
 	var lineColor;
 	if (line == "blue") {
@@ -176,6 +177,8 @@ function drawLine(line, callback) {
 		callback();
 	}
 }
+*/
+/*
 function findStation(callback) {
 	Number.prototype.toRad = function() {
 		return this * Math.PI / 180;
@@ -227,3 +230,4 @@ function findIndexOfMin(array) {
 	}
 	return minIndex;
 }
+*/

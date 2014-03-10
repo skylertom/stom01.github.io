@@ -22,8 +22,12 @@ function dataReady() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		scheduleData = JSON.parse(xhr.responseText);
 		console.log(scheduleData["line"]);
-		findGeoLocation(function() {
-			getLine(scheduleData["line"], function () {
+		var mapOptions = {
+			zoom: 14
+		};
+		map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+		getLine(scheduleData["line"], function () {
+			findGeoLocation(function() {
 				MakeLineMarkers(function () {
 					drawLine(scheduleData["line"], function () {
 						findStation()
@@ -39,30 +43,23 @@ function dataReady() {
 }
 
 function findGeoLocation(callback) {
-	var mapOptions = {
-		zoom: 14
-	};
-	map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 	if (navigator.geolocation) {
-		var x = function () {
-			browserSupportFlag = true;
-			navigator.geolocation.getCurrentPosition(function(position) {
-				initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-				map.setCenter(initialLocation);
-				initialMarker = new google.maps.Marker({
-					position: initialLocation,
-					map: map,
-					title: 'You are here'
-				});
-				findStation();
-				if (callback) {
-					callback();
-				}
-			}, function() {
-				handleNoGeolocation(browserSupportFlag);
+		browserSupportFlag = true;
+		navigator.geolocation.getCurrentPosition(function(position) {
+			initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			map.setCenter(initialLocation);
+			initialMarker = new google.maps.Marker({
+				position: initialLocation,
+				map: map,
+				title: 'You are here'
 			});
-		} 
-		x();
+			findStation();
+			if (callback) {
+				callback();
+			}
+		}, function() {
+			handleNoGeolocation(browserSupportFlag);
+		});
 	}
 	else { //browser doesn't support Geolocation
 		browserSupportFlag = false;
@@ -117,10 +114,7 @@ function MakeLineMarkers(callback) {
 			title:  item["place"],
 		});
 		markers[i++] = lineMarkers;
-		var foo = function () {
-			displayInfo(lineMarkers);
-		}
-		foo();
+		displayInfo(lineMarkers);
 	});
 	if (callback) {
 		callback();

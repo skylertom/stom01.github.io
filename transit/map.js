@@ -152,12 +152,12 @@ function drawLine(line) {
 	});
 	linePath.setMap(map);
 }
-	var distances = [];
 function findStation() {
 	Number.prototype.toRad = function() {
 		return this * Math.PI / 180;
 	}
 
+	var distances = [];
 	var i = 0;
 	var lat2 = initialLocation.lat(); 
 	var lon2 = initialLocation.lng(); 
@@ -177,7 +177,9 @@ function findStation() {
 		//console.log("distance at i: " + i + " the distance is: " + distances[i]);
 		i++;
 	});
-	var index = findIndexOfMin(distances);
+	for (var x in distances) {
+		console.log("Min is " + distances[x]);
+	}
 	//console.log("Min is " + index);
 	//console.log(markers[index].getTitle());
 }

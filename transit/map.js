@@ -176,11 +176,11 @@ function findStation(callback) {
 
 	var distances = [];
 	var i = 0;
-	var lat2 = initialLocation.lat(); 
-	var lon2 = initialLocation.lng(); 
-	var R = 6371; // km 
 	console.log("there are " + markers.length + " items in the list");
 	markers.map(function (item) {
+		var lat2 = initialLocation.lat(); 
+		var lon2 = initialLocation.lng(); 
+		var R = 6371; // km 
 		var lat1 = item.getPosition().lat();
 		var lon1 = item.getPosition().lng();
 		var x1 = Math.abs(lat2-lat1);

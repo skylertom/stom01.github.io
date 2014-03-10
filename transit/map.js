@@ -208,7 +208,7 @@ function findIndexOfMin(array) {
 	var minIndex = 0;
 	var currentMin = array[0];
 	console.log("Elements = " + array.length);
-	console.log("starts at  " + array[i]);
+	console.log("starts at  " + array[0]);
 	for (var i in array) {
 		if (array[i] < currentMin) {
 			console.log("Chnging min: from " + currentMin + " to " + array[i]);

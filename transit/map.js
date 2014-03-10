@@ -59,6 +59,7 @@ function dataReady() {
 		getLine(scheduleData["line"]);
 		MakeLineMarkers();
 		drawLine(scheduleData["line"]);
+		findStation();
 	}
 	else if (xhr.readyState == 4 && xhr.status == 500) {
 		scheduleDom = document.getElementById("map_canvas");

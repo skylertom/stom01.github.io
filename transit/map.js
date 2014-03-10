@@ -8,6 +8,7 @@ var campusCenter = new google.maps.LatLng(42.405816, -71.120443);
 var lineData = [];
 var map;
 var SEC = 60;
+google.maps.event.addDomListener(window, 'load', init);
 function init() {
 	xhr = new XMLHttpRequest();
 	xhr.open("get", "http://mbtamap.herokuapp.com/mapper/rodeo.json", true);

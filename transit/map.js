@@ -29,9 +29,11 @@ function dataReady() {
 		getLine(scheduleData["line"], function () {
 			findGeoLocation(function() {
 				MakeLineMarkers(function () {
+					/*
 					drawLine(scheduleData["line"], function () {
 						findStation()
 					});
+					*/
 				});
 			});
 		});

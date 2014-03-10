@@ -1,5 +1,7 @@
 Skyler Tom
 
-1. The lines are not connected, trouble with inbound and outbound, you are here marker doesn't yet have an info window, have not calculated the nearest T stop, css file isn't complete
+1. Red line not implemented,
+	Blue line: finds min distance, doesn't display markers
+	Orange Line: finds min distance til end, doesn't have info for the last marker, markers on screen don't show up
 2. I have collaborated with: 
 3. I've spent 10 hours (so far)

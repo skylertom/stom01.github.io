@@ -21,8 +21,8 @@ function dataReady() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		scheduleData = JSON.parse(xhr.responseText);
 		console.log(scheduleData["line"]);
-		getLine(scheduleData["line"], MakeLineMarkers(drawLine(scheduleData["line"],
-		findGeoLocation(findStation()))));
+		findGeoLocation(getLine(scheduleData["line"], MakeLineMarkers(drawLine(scheduleData["line"],
+		findStation()))));
 	}
 	else if (xhr.readyState == 4 && xhr.status == 500) {
 		scheduleDom = document.getElementById("map_canvas");

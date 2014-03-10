@@ -38,7 +38,7 @@ function init() {
 	}
 }
 
-google.maps.event.addDomListener(window, 'load', init);
+//google.maps.event.addDomListener(window, 'load', init);
 
 function handleNoGeolocation(errorFlag) {
 	map.setZoom(12);

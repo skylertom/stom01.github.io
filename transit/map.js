@@ -21,7 +21,6 @@ function init() {
 function dataReady() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		scheduleData = JSON.parse(xhr.responseText);
-		console.log(scheduleData["line"]);
 		var mapOptions = {
 			zoom: 14
 		};
@@ -204,10 +203,12 @@ function findStation(callback) {
 		distances[i] = R * c; 
 		i++;
 	});
-	var index = findIndexOfMin(distances);
-	console.log(markers[index].getTitle());
+	var distanceInfo = findIndexOfMin(distances);
+	var minDist = distanceInfo[1] * .6214; 
+	var minDist =Math.round(minDist * 100) / 100;
 	var infowindow = new google.maps.InfoWindow({
-		content: "<p>Nearest " + scheduleData["line"] + " line stop is " + markers[index].getTitle() + "</p>"
+		content: "<h3>You Are Here </h3><p>Nearest " + scheduleData["line"] + " line stop is " + 
+			markers[distanceInfo[0]].getTitle() + "(" + minDist + " miles away)</p>"
 	});
 
 	google.maps.event.addListener(initialMarker, 'click', function() {
@@ -227,5 +228,5 @@ function findIndexOfMin(array) {
 			minIndex = i;
 		}
 	}
-	return minIndex;
+	return [minIndex, currentMin];
 }

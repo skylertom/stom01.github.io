@@ -162,6 +162,7 @@ function findStation() {
 	var lat2 = initialLocation.lat(); 
 	var lon2 = initialLocation.lng(); 
 	var R = 6371; // km 
+	console.log("there are " + markers.length + " items in the list");
 	markers.map(function (item) {
 		var lat1 = item.getPosition().lat();
 		var lon1 = item.getPosition().lng();
@@ -177,6 +178,7 @@ function findStation() {
 		//console.log("distance at i: " + i + " the distance is: " + distances[i]);
 		i++;
 	});
+	console.log("there are " + distances.length + " items in the distance list");
 	for (var x in distances) {
 		console.log("Min is " + distances[x]);
 	}

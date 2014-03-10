@@ -44,22 +44,25 @@ function findGeoLocation(callback) {
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 	if (navigator.geolocation) {
-		browserSupportFlag = true;
-		navigator.geolocation.getCurrentPosition(function(position) {
-			initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			map.setCenter(initialLocation);
-			initialMarker = new google.maps.Marker({
-				position: initialLocation,
-				map: map,
-				title: 'You are here'
+		var x = function () {
+			browserSupportFlag = true;
+			navigator.geolocation.getCurrentPosition(function(position) {
+				initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				map.setCenter(initialLocation);
+				initialMarker = new google.maps.Marker({
+					position: initialLocation,
+					map: map,
+					title: 'You are here'
+				});
+				findStation();
+				if (callback) {
+					callback();
+				}
+			}, function() {
+				handleNoGeolocation(browserSupportFlag);
 			});
-			findStation();
-			if (callback) {
-				callback();
-			}
-		}, function() {
-			handleNoGeolocation(browserSupportFlag);
-		});
+		} 
+		x();
 	}
 	else { //browser doesn't support Geolocation
 		browserSupportFlag = false;

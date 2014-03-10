@@ -21,9 +21,11 @@ function dataReady() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		scheduleData = JSON.parse(xhr.responseText);
 		console.log(scheduleData["line"]);
-		getLine(scheduleData["line"]);
-		MakeLineMarkers();
-		drawLine(scheduleData["line"]);
+		getLine(scheduleData["line"], function () {
+			MakeLineMarkers(function () {
+				drawLine(scheduleData["line"]);
+			});
+		});
 		findGeoLocation(function() {findStation()});
 	}
 	else if (xhr.readyState == 4 && xhr.status == 500) {
@@ -195,10 +197,15 @@ function findStation(callback) {
 		console.log("distance at i: " + i + " the distance is: " + distances[i]);
 		i++;
 	});
-	console.log("there are " + distances.length + " items in the distance list");
 	var index = findIndexOfMin(distances);
-	console.log("Min is " + index);
 	console.log(markers[index].getTitle());
+	var infowindow = new google.maps.InfoWindow({
+		content: "Nearest " + scheduleData["line"] + " line stop is " + markers[index].getTitle()
+	});
+
+	google.maps.event.addListener(initialMarker, 'click', function() {
+		infowindow.open(initialMarker.get('map'), initialMarker);
+	});
 	if (callback) {
 		callback();
 	}
@@ -209,11 +216,9 @@ function findIndexOfMin(array) {
 	var currentMin = array[0];
 	for (var i in array) {
 		if (array[i] < currentMin) {
-			console.log("Chnging min: from " + currentMin + " to " + array[i]);
 			currentMin = array[i];
 			minIndex = i;
 		}
 	}
-	console.log("From find function, min is: " + minIndex);
 	return minIndex;
 }

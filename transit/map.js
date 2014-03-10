@@ -197,9 +197,7 @@ function findStation(callback) {
 		i++;
 	});
 	console.log("there are " + distances.length + " items in the distance list");
-	for (var x in distances) {
-		console.log("Min is " + distances[x]);
-	}
+	var index = findIndexOfMin(distances);
 	console.log("Min is " + index);
 	console.log(markers[index].getTitle());
 	if (callback) {
@@ -212,7 +210,6 @@ function findIndexOfMin(array) {
 	var currentMin;
 	for (var i in array) {
 		if (array[i] < currentMin) {
-
 			currentMin = array[i];
 			minIndex = i;
 		}

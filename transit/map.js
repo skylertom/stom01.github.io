@@ -178,7 +178,6 @@ function findStation(callback) {
 	var i = 0;
 	console.log("there are " + markers.length + " items in the list");
 	markers.map(function (item) {
-		console.log("running");
 		var lat2 = initialLocation.lat(); 
 		var lon2 = initialLocation.lng(); 
 		var R = 6371; // km 

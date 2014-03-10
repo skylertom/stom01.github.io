@@ -192,15 +192,15 @@ function findStation(callback) {
 		                Math.sin(dLon/2) * Math.sin(dLon/2);  
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 		distances[i] = R * c; 
-		//console.log("distance at i: " + i + " the distance is: " + distances[i]);
+		console.log("distance at i: " + i + " the distance is: " + distances[i]);
 		i++;
 	});
 	console.log("there are " + distances.length + " items in the distance list");
 	for (var x in distances) {
 		console.log("Min is " + distances[x]);
 	}
-	//console.log("Min is " + index);
-	//console.log(markers[index].getTitle());
+	console.log("Min is " + index);
+	console.log(markers[index].getTitle());
 	if (callback) {
 		callback();
 	}
@@ -211,9 +211,9 @@ function findIndexOfMin(array) {
 	var currentMin;
 	for (var i in array) {
 		if (array[i] < currentMin) {
+
 			currentMin = array[i];
 			minIndex = i;
-			console.log("the min is at i: " + i);
 		}
 	}
 	console.log("the final min is at i: " + i);

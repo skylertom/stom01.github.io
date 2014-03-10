@@ -189,8 +189,9 @@ function findIndexOfMin(array) {
 		if (array[i] < currentMin) {
 			currentMin = array[i];
 			minIndex = i;
-	console.log("the min is at i: " + i);
+			console.log("the min is at i: " + i);
 		}
 	}
+	console.log("the final min is at i: " + i);
 	return i;
 }

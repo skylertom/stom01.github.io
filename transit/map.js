@@ -173,8 +173,9 @@ function findStation() {
 		                Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
 		                Math.sin(dLon/2) * Math.sin(dLon/2);  
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-		distances[i++] = R * c; 
-		console.log("distance at i: " + i + " the distance is: " + distances[i - 1]);
+		distances[i] = R * c; 
+		console.log("distance at i: " + i + " the distance is: " + distances[i]);
+		i++;
 	});
 	//var index = findIndexOfMin(distances);
 	//console.log(markers[index].getTitle());

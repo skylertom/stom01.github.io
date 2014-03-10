@@ -143,9 +143,6 @@ function displayInfo(myMarker) {
 	google.maps.event.addListener(myMarker, 'click', function() {
 		infowindow.open(myMarker.get('map'), myMarker);
 	});
-	if (callback) {
-		callback();
-	}
 }
 
 function drawLine(line, callback) {

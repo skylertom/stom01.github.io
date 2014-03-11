@@ -1,11 +1,8 @@
 Skyler Tom
 
-1. Red line not implemented,
-	Blue line: good
-	Orange Line: good
-	figure out inbound and outbound
-2. I have collaborated with: 
-3. I've spent 16 hours (so far)
+1. Everything is implemented properly, I accidentally used the gh-pages
+        branch during my work on the assignment to test out features as
+        I added them (instead of pushing to gh-pages at the end)
+2. I have collaborated with: George Brown, Siddartha Prasaad
+3. I've spent 18 hours
 
-
-Plan for the redline:

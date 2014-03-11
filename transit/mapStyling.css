@@ -6,6 +6,6 @@ body {
 	margin: 0px;
 	padding: 0px;
 }
-div.map_canvas {
+#map_canvas {
 	height:100%;
 }

@@ -26,15 +26,16 @@ function dataReady() {
 		};
 		map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 		findGeoLocation(function() {
-			/*
+				console.log("got line");
 			getLine(scheduleData["line"], function () {
+				/*
 				MakeLineMarkers(function () {
 					drawLine(scheduleData["line"], function () {
 						findStation();
 					});
 				});
-			});
 */
+			});
 		});
 	}
 	else if (xhr.readyState == 4 && xhr.status == 500) {
@@ -44,10 +45,16 @@ function dataReady() {
 }
 
 function findGeoLocation(callback) {
-	console.log("finding geolocation");
 	if (navigator.geolocation) {
 		browserSupportFlag = true;
+		var options = {
+			enableHighAccuracy: true,
+			timeout: 5000,
+			maximumAge: 0
+		};
 		navigator.geolocation.getCurrentPosition(function(position) {
+			console.log("found geolocation");
+			handleNoGeolocation(browserSupportFlag);
 			initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 			map.setCenter(initialLocation);
 			initialMarker = new google.maps.Marker({
@@ -59,14 +66,20 @@ function findGeoLocation(callback) {
 				callback();
 			}
 		}, function() {
+			console.log("not finding geolocation");
 			handleNoGeolocation(browserSupportFlag);
-			callback();
-		});
+			if (callback) {
+				callback();
+			}
+		}, options);
 	}
 	else { //browser doesn't support Geolocation
+		console.log("not finding geolocation");
 		browserSupportFlag = false;
 		handleNoGeolocation(browserSupportFlag);
-		callback();
+		if (callback) {
+			callback();
+		}
 	}
 }
 

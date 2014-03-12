@@ -16,8 +16,6 @@ function init() {
 	xhr.send(null);
 }
 
-google.maps.event.addDomListener(window, 'load', init);
-
 function dataReady() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		scheduleData = JSON.parse(xhr.responseText);

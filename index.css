@@ -13,18 +13,26 @@ h1 {
 	text-align: center;
 }
 
+p {
+	display: table-cell;
+	height: 50px;
+	width: 33%;
+	line-height: 50px;
+	text-align: center;
+	white-space: nowrap;
+}
 
 div.links {
-	float: left;
-	padding-top: 20px;
+	display: table;
+	height: 50px;
+	width: 100%;
 	font-family: Arvo;
 	font-size: 25px;
 	padding-right: 20px;
 }
 
 #photo {
-	float: left;
-	padding-left: 100px;
+	text-align: center;
 }
 a {
 	text-decoration: none;

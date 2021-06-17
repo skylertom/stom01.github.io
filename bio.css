@@ -1,0 +1,41 @@
+body {
+	background-color: #E9ECF0;
+	margin: 30px;
+	background-color: white;
+}
+
+h1 {
+	font-size: 35px;
+	font-family: 'Raleway Light';
+}
+
+#name {
+	text-align: center;
+}
+
+
+div.text {
+	font-size: 18px;
+	font-family: Maven;
+	max-width: 600px;
+	text-align: left;
+	float: left;
+}
+
+#frisbee {
+	width: 25%;
+	padding-left: 5%;
+}
+
+div.links {
+	font-size: 18px;
+	float: left;
+	padding-top: 20px;
+	font-family: Arvo;
+	font-size: 25px;
+	padding-right: 20px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
